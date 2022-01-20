@@ -1,0 +1,11 @@
+class Solution:
+    def isValid(self, s: str) -> bool:
+        symbolMap= { "(": ")", "{": "}", "[": "]" }
+        stack = []
+        
+        for symbol in s:
+            if symbol in symbolMap.keys():
+                stack.append(symbol)
+            elif stack == [] or symbol != symbolMap[stack.pop()]:
+                return False
+        return stack == []
